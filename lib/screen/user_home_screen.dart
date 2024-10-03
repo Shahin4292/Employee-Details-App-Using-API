@@ -30,8 +30,38 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: const Text("Employee Bio Data From Api"),
       ),
+      body: ListView.builder(
+          itemCount: userModel.length,
+          shrinkWrap: true,
+          itemBuilder: (context, index) {
+            final users = userModel[index];
+            return Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: GestureDetector(
+                onTap: () {},
+                child: Column(
+                  children: [
+                    Material(
+                      elevation: 1,
+                      borderRadius: BorderRadius.circular(20),
+                      child: Row(
+                        children: [
+                          CircleAvatar(
+                            radius: 40,
+                            backgroundColor: Colors.blue[100],
+                            backgroundImage: NetworkImage(users.image),
+                          )
+                        ],
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            );
+          }),
     );
   }
 }
